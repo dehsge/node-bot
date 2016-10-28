@@ -4,11 +4,6 @@ var Botkit = require('botkit'),
 var token = process.env.SLACK_TOKEN;
 var ACCESS_TOKEN = 'UBCDXUPLEZDDL7C6GDYGTWVAWGUKR54I';
 
-wit.captureTextIntent(ACCESS_TOKEN, "What's the weather in Melbourne?", function (err, res) {
-    console.log("Response from Wit for text input: ");
-    if (err) console.log("Error: ", err);
-    console.log(JSON.stringify(res, null, " "));
-});
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
@@ -33,13 +28,18 @@ if (token) {
   console.log('Starting in Beep Boop multi-team mode')
   require('beepboop-botkit').start(controller, { debug: true })
 }
+wit.captureTextIntent(ACCESS_TOKEN, "What's the weather in Melbourne?", function (err, res) {
+    var a = "Response from Wit for text input: ";
+    return a;
+})
+
 
 controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
 })
 
 controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
-  bot.reply(message, 'Hello.')
+  bot.reply(message, 'a')
 })
 
 controller.hears(['hello', 'hi'], ['direct_message'], function (bot, message) {
