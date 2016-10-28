@@ -29,7 +29,7 @@ if (token) {
   require('beepboop-botkit').start(controller, { debug: true })
 }
 wit.captureTextIntent(ACCESS_TOKEN, "What's the weather in Melbourne?", function (err, res) {
-    var a = "Response from Wit for text input: ";
+    var a = res;
     return a;
 })
 
