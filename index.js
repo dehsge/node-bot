@@ -1,7 +1,14 @@
-var Botkit = require('botkit')
+var Botkit = require('botkit'),
+    wit    = require('node-wit');
 
-var token = process.env.SLACK_TOKEN
+var token = process.env.SLACK_TOKEN;
+var ACCESS_TOKEN = 'UBCDXUPLEZDDL7C6GDYGTWVAWGUKR54I';
 
+wit.captureTextIntent(ACCESS_TOKEN, "What's the weather in Melbourne?", function (err, res) {
+    console.log("Response from Wit for text input: ");
+    if (err) console.log("Error: ", err);
+    console.log(JSON.stringify(res, null, " "));
+});
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
